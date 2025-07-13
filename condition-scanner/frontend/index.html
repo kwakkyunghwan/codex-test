@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Condition Scanner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Stock Scanner</h1>
+  <ul id="results"></ul>
+  <script>
+    fetch('/scan')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('results');
+        data.forEach(stock => {
+          const li = document.createElement('li');
+          li.textContent = stock.name + ' - ' + stock.price;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
